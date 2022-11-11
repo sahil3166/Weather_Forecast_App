@@ -71,12 +71,12 @@ def plot_line(days, min_t, max_t):
     plt.ylabel('Temperature', size=12)
     plt.title('5-Day Weather Forecast', size=15)
 
-    for i in range(5):
+    for i in range(6):
         plt.text(days[i], min_t[i] - 1.5, min_t[i],
                  horizontalalignment='center',
                  verticalalignment='bottom',
                  color='black')
-    for i in range(5):
+    for i in range(6):
         plt.text(days[i], max_t[i] + 0.5, max_t[i],
                  horizontalalignment='center',
                  verticalalignment='bottom',
@@ -128,7 +128,7 @@ def weather_detail(place, unit, g_type):
     forecast = forecaster.forecast
     obs = mgr.weather_at_place(place)
     weather = obs.weather
-    temperature = weather.temperature(unit='celsius')['temp']
+    temperature1 = weather.temperature(unit='celsius')['temp']
     if unit == 'Celsius':
         unit_c = 'celsius'
     else:
@@ -152,9 +152,9 @@ def weather_detail(place, unit, g_type):
     weather = obs.weather
     st.write(f"## 📍 Weather at {place[0].upper() + place[1:]} currently: ")
     if unit_c == 'celsius':
-        st.write(f"### 🌡️ Temperature: {temperature} °C")
+        st.write(f"### 🌡️ Temperature: {temperature1} °C")
     else:
-        st.write(f"### 🌡️  Temperature: {temperature} F")
+        st.write(f"### 🌡️  Temperature: {temperature1} F")
     st.write(f"### ☁️ Sky: {weather.detailed_status}")
     st.write(f"### 🌪  Wind Speed: {round(weather.wind(unit='km_hour')['speed'])} km/h")
     st.write(f"### ⛅️Sunrise Time : {weather.sunrise_time(timeformat='iso')} GMT")
